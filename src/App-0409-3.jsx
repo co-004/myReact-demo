@@ -1,8 +1,8 @@
 // 建立物件
-const obj1 = {
-    name: '建仔',
-    age: '7'
-}
+// const obj1 = {
+//     name: '建仔',
+//     age: '7'
+// }
 //一般寫法
 // const name = obj1.name;
 // const age = obj1.age;
@@ -42,11 +42,12 @@ const data={
 }
 // 解構+展開(...other)
 // 解構s2,展開s1, s3
-// const{s2,...otehr}=data
-// console.log(s2)
-// console.log(other)
+const{s2,...other}=data
+console.log(s2)
+console.log(other)
 // 解構物件中的物件 =>s2
-
+const{id,subject,score}=s2
+console.log(id,subject,score)
 
 
 export default function App() {
