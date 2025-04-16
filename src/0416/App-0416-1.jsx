@@ -1,0 +1,103 @@
+import { useState } from "react";
+import { useEffect } from "react";
+
+function App() {
+    // 使用useState建立變數
+    const [cities, setCities] = useState([]);
+    // 渲染後，使用useEffect先取得天氣資料
+    useEffect(() => {
+        (async () => {
+            // 取得遠端資料
+            // const data = await axios.get('https://coffeeteacher.github.io/weather/F-C0032-001.json')
+            const data = await axios.get('./F-C0032-001.json')
+            // 查看是否連上json;
+            // console.log(data);
+
+            // 解構各縣市的氣象資料;
+            const { location } = data.data.cwaopendata.dataset;
+            console.log(location);
+            // 建立時間物件
+            // const options={
+            //     hour:'numeric',
+            //     minute:'numeric'
+            
+            // 將取得的天氣資料，透過setLocation方法，更新location變數資料
+            setCities(location);
+        })();
+    }, [])
+
+    return (
+        <>
+            <h2>36小時天氣預報</h2>
+            {/* 一列兩欄 */}
+            <div className="row row-cols-2 g-4">
+                {/* 使用迴圈，顯示所有縣市 */}
+                {
+                    cities.map((city) => {
+                        return (
+                            < div className="col" key={city.locationName} >
+                                {/* 卡片樣式 */}
+                                < div className="card text-center" >
+                                    {/* 頭-卡片標題 */}
+                                    < div className="card-header" >
+                                        <div className="h4 my-0">
+                                            台北市
+                                        </div>
+                                    </div>
+                                    {/* 身-卡片內容 */}
+                                    <div className="row row-cols-3">
+                                        {/* 顯示每個縣市的3個欄位資訊 */}
+                                        {
+                                            city.weatherElement[0].time.map((item, index) => {
+                                                return (
+                                                    <div className="col" key={index}>
+                                                        {/* 日期*/}
+                                                        <div className="h4 my-0">
+                                                            {/* 16日 */}
+                                                            {/* 使用日期時間函數 toLocalString() */}
+                                                            {
+                                                                new Date(item.startTime).toLocaleDateString(undefined,{
+                                                                    day:'numeric'
+                                                                })
+                                                            }
+                                                        </div>
+                                                        {/* 時間 */}
+                                                        {/* 上午6:00<br /> |</br>下午6:00<br /> */}
+                                                        {
+                                                            new Date(item.startTime).toLocaleString(undefined,{
+                                                                hour:'numeric',
+                                                                minute:'numeric'
+                                                            })
+                                                        }<br/>
+
+                                                        {/* 天氣圖：使用執行路徑，要放在public中才讀得到 */}
+                                                        {/* <img src="./weatherIcon/晴時多雲.svg" alt="" /> */}
+                                                        <img src={`./weatherIcon/${item.parameter.parameterName}.svg`} alt="" />
+                                                        {/* 天氣名稱 */}
+                                                        <div className="mt-2">
+                                                            {/* 晴時多雲 */}
+                                                            {item.parameter.parameterName}
+                                                        </div>
+                                                        {/* 降雨機率 */}
+                                                        <div className="mt-2">
+                                                            {/* icon */}
+                                                            <i className="bi bi-cloud-drizzle">
+                                                                {/* 7% */}
+                                                                {city.weatherElement[4].time[index].parameter.parameterName}
+                                                            </i>
+                                                        %</div>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                            </div >
+                        )
+                    })
+                }
+            </div>
+        </>
+    )
+}
+export default App
