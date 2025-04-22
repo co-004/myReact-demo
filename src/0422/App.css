@@ -1,0 +1,74 @@
+@font-face {
+    font-family: "cubic";
+    src: url(../assets/0422-webfonts/Cubic_11.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #DCDCDC;
+    color: #F8F6F2;
+    font-family: "cubic", sans-serif;
+}
+
+.wrapper {
+    background-color: #5C4A8D;
+    width: 450px;
+    margin: 50px auto;
+    border-radius: 5px;
+    padding: 30px;
+    text-align: center;
+}
+
+.create-form {
+    border: 3px solid #DCDCDC;
+    width: 100%;
+    height: 40px;
+    margin: 20px 0px;
+    display: flex;
+}
+
+.create-form>input {
+    outline: none;
+    border: none;
+    background: #DCDCDC;
+    color: gray;
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.create-form>button {
+    border: none;
+    background-color: #5C4A8D;
+    color: #DCDCDC;
+    width: 50px;
+    height: 100%;
+}
+
+.todo {
+    background-color: #CFE8FF;
+    color: #333;
+    height: 40px;
+    margin-top: 10px;
+    padding: 0 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.todo p {
+    margin: 0
+}
+
+.completed {
+    /* opacity: .4 */
+    text-decoration: line-through;
+    color: #5C4A8D;
+}
