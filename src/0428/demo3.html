@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            cursor: pointer;
+        }
+
+        span:hover {
+            color: #D3D3D3;
+        }
+
+        .content {
+            background-color: #C4C4C4;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HTML DOM 分頁效果 -->
+    <div>
+        <span onclick="changeToTest()">DreamTest</span>
+        <span onclick="changeToBook()">DreamBook</span>
+        <span onclick="changeToBit()">DreamBit</span>
+    </div>
+    <hr>
+    <div id="Test">Good day, welcome to DreamTest!
+
+        <div id="Page1">Welcome to Page-1!
+            <br>
+            <button onclick="changeToPage2()">Next</button>
+        </div>
+        <div id="Page2" style="display: none;">
+            Welcome to Page-2!
+            <br>
+            <button onclick="changeToPage1()">Previous</button>
+            <button onclick="changeToPage3()">Next</button>
+        </div>
+        <div id="Page3" style="display: none;">
+            Welcome to Page-3!
+            <br>
+            <button onclick="changeToPage2()">Previous</button>
+        </div>
+    </div>
+    <div id="Book" style="display: none;">Hello everyone. I am DreamBook!
+    </div>
+    <div id="Bit" style="display: none;">
+        Hello everyone. I am a DreamBit!
+    </div>
+
+    <script>
+        function changeToTest() {
+            // 顯示DreamTest
+            let Test = document.querySelector("#Test");
+            Test.style.display = "block";
+            // 隱藏DreamBook&DreamBit
+            let Book = document.querySelector("#Book");
+            Book.style.display = "none";
+            let Bit = document.querySelector("#Bit");
+            Bit.style.display = "none";
+        }
+        function changeToBit() {
+            // 隱藏DreamBook&Test
+            let Book = document.querySelector("#Book");
+            Book.style.display = "none";
+            let Test = document.querySelector("#Test");
+            Test.style.display = "none";
+            // 顯示DreamBit
+            let Bit = document.querySelector("#Bit");
+            Bit.style.display = "block";
+        }
+        function changeToBook() {
+            // 隱藏DreamBit&Test
+            let Bit = document.querySelector("#Bit");
+            Bit.style.display = "none";
+            let Test = document.querySelector("#Test");
+            Test.style.display = "none";
+            // 顯示DreamBook
+            let Book = document.querySelector("#Book");
+            Book.style.display = "block";
+        }
+        // 第一頁
+        function changeToPage1() {
+            // 顯示Page1
+            let Page1 = document.querySelector("#Page1");
+            Page1.style.display = "block";
+            // 隱藏Page2.3
+            let Page2 = document.querySelector("#Page2");
+            Page2.style.display = "none";
+            let Page3 = document.querySelector("#Page3");
+            Page3.style.display = "none"
+        }
+        // 第二頁
+        function changeToPage2() {
+            // 顯示Page2
+            let Page2 = document.querySelector("#Page2");
+            Page2.style.display = "block";
+            // 隱藏Page1.3
+            let Page1 = document.querySelector("#Page1");
+            Page1.style.display = "none";
+            let Page3 = document.querySelector("#Page3");
+            Page3.style.display = "none";
+        }
+        // 第三頁
+        function changeToPage3() {
+            // 顯示Page3
+            let Page3 = document.querySelector("#Page3");
+            Page3.style.display = "block";
+            // 隱藏Page1.2
+            let Page1 = document.querySelector("#Page1");
+            Page1.style.display = "none";
+            let Page2 = document.querySelector("#Page2");
+            Page2.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
