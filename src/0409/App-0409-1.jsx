@@ -1,4 +1,4 @@
-import img1 from './assets/0409-img/raven.jpg'
+import img1 from '../assets/0409-img'
 function App() {
     const data = {
         prod1: {

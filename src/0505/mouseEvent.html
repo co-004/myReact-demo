@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑鼠常見事件</title>
+</head>
+<body>
+    <h2>滑鼠常見事件
+    <ul>
+        <li>click:左鍵一下</li>
+        <li>dbclick:左鍵兩下</li>
+        <li>mousedown:按下滑鼠時</li>
+        <li>mouseup:放開滑鼠時</li>
+
+        <li style="color: blue;">mouseover:滑鼠經過時</li>
+        <li style="color: blue;">mouseout:滑鼠離開時</li>
+
+        <li style="color: purple;">mouseenter:滑鼠進入時</li>
+        <li style="color: purple;">mouseleave:滑鼠離開時</li>
+        <li>mousemove:滑鼠移動時</li>
+        <li>mousewheel:滾動滑鼠時</li>
+    </ul>
+</h2>
+<hr>
+<h2>ex:取得滑鼠位置 <span id="xy"></span>
+</h2>
+<img src="../assets/0415-img/r1.jpg" alt="" width="200" id="p1">
+<script>
+    // 網頁中任何一個位置座標
+    let p1=document.getElementById("p1");
+    p1.addEventListener("mousemove",e=>{
+    console.log(e);
+    document.getElementById("xy").textContent= `mousemove:${e.clientX},${e.clientY}`;
+    });
+
+    // 取得p1圖片內的座標(以圖片左上角為起始點)
+    p1.addEventListener("click",e=>{
+        document.getElementById("xy").textContent =`click:${e.offsetX}, ${e.offsetY}`;
+    });
+    // 取得p1圖片內的座標(以頁面左上角為起始點)
+    p1.addEventListener("dbclick",e=>{
+        document.getElementById("xy").textContent =`dbclick:${e.pageX}, ${e.pageY}`;
+    });
+</script>
+<img src="../assets/0415-img/r2.jpg" alt="" width="200" id="p2">
+<script>
+    // 取得第二張圖左鍵一下的座標
+    let p2 = document.getElementById("p2"); 
+</script>
+</body>
+</html>
