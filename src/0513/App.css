@@ -1,0 +1,8 @@
+.cssAnim1 {
+    border: 1px solid #D0D0D0;
+    width: 200px;
+    height: 200px;
+    display: block;
+    overflow: hidden; /*超出框隱藏*/
+
+}
